@@ -11,7 +11,7 @@ public class MyDemoLoggingAspect {
 
     //start with @Before advice
 
-    @Before("execution (* addAccount())")
+    @Before("execution (* com.dilemmawalker.AOPdemo.dao.AccountDAOImpl.addAccount())")
     public void beforeAddAccountAdvice(){
         System.out.println("Executing @Before advice on addAccount()");
     }
