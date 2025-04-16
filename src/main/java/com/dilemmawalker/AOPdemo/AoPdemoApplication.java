@@ -1,6 +1,7 @@
 package com.dilemmawalker.AOPdemo;
 
 import com.dilemmawalker.AOPdemo.dao.AccountDAO;
+import com.dilemmawalker.AOPdemo.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,19 +15,21 @@ public class AoPdemoApplication {
 	}
 
 	@Bean
-	public CommandLineRunner commandLineRunner(AccountDAO accountDAO){
+	public CommandLineRunner commandLineRunner(AccountDAO accountDAO, MembershipDAO membershipDAO){
 		// no need to do dependency injection for AccountDAO as CommandLineRunner is a Bean hence
 		// it automatically injects depend on beans.
 		return runner -> {
 //			System.out.println("Hello world");
-			demoTheBeforeAdvice(accountDAO);
+			demoTheBeforeAdvice(accountDAO, membershipDAO);
 		};
 	}
 
-	public void demoTheBeforeAdvice(AccountDAO accountDAO){
+	public void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO){
 
 		//call business Method
 		accountDAO.addAccount();
+		System.out.println("executing 2nd business method");
+		membershipDAO.addAccount();
 	}
 
 }
