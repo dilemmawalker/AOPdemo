@@ -15,6 +15,12 @@ public class MyDemoLoggingAspect {
     @Pointcut("execution(* com.dilemmawalker.AOPdemo.dao.*.*(..))")
     private void forDaoPackage(){}
 
+    @Pointcut("execution(* com.dilemmawalker.AOPdemo.dao.*.get*(..))")
+    private void getter(){}
+
+    @Pointcut("execution(* com.dilemmawalker.AOPdemo.dao.*.set*(..))")
+    private void setter(){}
+
 //    @Before("execution (* com.dilemmawalker.AOPdemo.dao.AccountDAOImpl.addAccount())")
 //    @Before("execution (* add*())")
 
@@ -27,4 +33,15 @@ public class MyDemoLoggingAspect {
     public void performApiAnalytics(){
         System.out.println("performing api Analytics");
     }
+
+    @Before("forDaoPackage() && getter()")
+    public void combineGetter(){
+        System.out.println("combining getter operation");
+    }
+
+    @Before("forDaoPackage() && setter()")
+    public void combineSetter(){
+        System.out.println("combining setter operation");
+    }
+
 }

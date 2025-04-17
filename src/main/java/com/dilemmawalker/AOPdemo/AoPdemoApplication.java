@@ -1,6 +1,7 @@
 package com.dilemmawalker.AOPdemo;
 
 import com.dilemmawalker.AOPdemo.dao.AccountDAO;
+import com.dilemmawalker.AOPdemo.dao.AccountDAOImpl;
 import com.dilemmawalker.AOPdemo.dao.MembershipDAO;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -25,6 +26,10 @@ public class AoPdemoApplication {
 	}
 
 	public void demoTheBeforeAdvice(AccountDAO accountDAO, MembershipDAO membershipDAO){
+
+//		AccountDAO account = new AccountDAOImpl();
+//		account.addName("Yash Handa");
+		accountDAO.getName("Yash Handa");
 
 		//call business Method
 		accountDAO.addAccount();
