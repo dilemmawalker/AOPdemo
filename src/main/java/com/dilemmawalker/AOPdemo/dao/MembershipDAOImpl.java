@@ -9,4 +9,11 @@ public class MembershipDAOImpl implements MembershipDAO {
     public void addAccount() {
         System.out.println(getClass() + ": adding membership account");
     }
+
+    @Override
+    public void checkAccount() {
+        System.out.println(getClass() + ": checking membership account");
+    }
+
+
 }

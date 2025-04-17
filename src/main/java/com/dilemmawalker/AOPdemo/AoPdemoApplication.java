@@ -30,6 +30,8 @@ public class AoPdemoApplication {
 		accountDAO.addAccount();
 		System.out.println("executing 2nd business method");
 		membershipDAO.addAccount();
+		System.out.println("executing 3rd business method");
+		membershipDAO.checkAccount();
 	}
 
 }
